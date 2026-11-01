@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent 核心概念與教育行政實踐 - 互動學習系統</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;900&display=swap');
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+
+  <!-- TOP HEADER -->
+  <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center shadow-lg">
+          <i data-lucide="bot" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30">中小學教師與行政專用</span>
+            <span class="text-xs text-slate-400">南一版教材對齊</span>
+          </div>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white">AI Agent 核心觀念與教育行政實踐</h1>
+        </div>
+      </div>
+
+      <!-- NAV TABS -->
+      <nav class="flex items-center space-x-1 sm:space-x-2 bg-slate-800/80 p-1 rounded-xl text-xs sm:text-sm font-medium">
+        <button onclick="switchTab('concept')" id="tab-btn-concept" class="tab-btn px-3 py-1.5 rounded-lg transition-all bg-blue-600 text-white font-semibold">
+          💡 觀念革命
+        </button>
+        <button onclick="switchTab('triad')" id="tab-btn-triad" class="tab-btn px-3 py-1.5 rounded-lg transition-all text-slate-300 hover:text-white hover:bg-slate-700">
+          ⚖️ 核心三劍客
+        </button>
+        <button onclick="switchTab('scenarios')" id="tab-btn-scenarios" class="tab-btn px-3 py-1.5 rounded-lg transition-all text-slate-300 hover:text-white hover:bg-slate-700">
+          🏫 三大落地實戰
+        </button>
+        <button onclick="switchTab('glossary')" id="tab-btn-glossary" class="tab-btn px-3 py-1.5 rounded-lg transition-all text-slate-300 hover:text-white hover:bg-slate-700">
+          📖 術語與 AGI
+        </button>
+        <button onclick="switchTab('quiz')" id="tab-btn-quiz" class="tab-btn px-3 py-1.5 rounded-lg transition-all text-slate-300 hover:text-white hover:bg-slate-700">
+          🎯 互動測驗
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- ==================== SECTION 1: CONCEPT ==================== -->
+    <div id="section-concept" class="tab-content block space-y-8">
+      <!-- HERO BANNER -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 p-8 sm:p-12 text-white shadow-xl">
+        <div class="relative z-10 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-sm mb-4">
+            <i data-lucide="sparkles" class="w-4 h-4"></i> 從「問答聊天」到「自主代理」的典範轉移
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+            AI 不再只是百科全書，<br class="hidden sm:inline">而是會主動做事的「數位教學夥伴」
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
+            過去我們習慣在 ChatGPT 對話框裡「打一句、回一句」，稍微換個話題它就忘了上文。現在的 <strong class="text-white">AI Agent（智慧代理人）</strong> 能具備目標導向、拆解任務、自己查檔案、使用工具驗算、甚至自我檢查錯誤的閉環能力！
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10">
+              <div class="text-2xl font-bold text-blue-300">1. 感知環境</div>
+              <div class="text-xs text-slate-300 mt-1">讀懂課綱、公文、學生成績表與作業細節</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10">
+              <div class="text-2xl font-bold text-amber-300">2. 自主推理</div>
+              <div class="text-xs text-slate-300 mt-1">規劃步驟（先算質因數、再對照錯誤盲點）</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10">
+              <div class="text-2xl font-bold text-emerald-300">3. 執行反思</div>
+              <div class="text-xs text-slate-300 mt-1">調用工具計算、自我校對並交付成果</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHATBOT VS AGENT COMPARISON -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Traditional Chatbot -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <span class="w-9 h-9 rounded-xl bg-red-100 text-red-600 flex items-center justify-center font-bold text-lg">
+                <i data-lucide="message-square" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-slate-900">傳統聊天機器人 (Chatbot / LLM)</h3>
+                <p class="text-xs text-slate-500">被動式問答・打一下動一下</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-600 mb-6">
+              <li class="flex items-start gap-2">
+                <i data-lucide="x-circle" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i>
+                <span><strong>缺乏記憶連貫：</strong>開新對話就全忘了，無法記住 701 班這學期的常規進展或特定學生的輔導細節。</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="x-circle" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i>
+                <span><strong>無法調用真實工具：</strong>純靠文字預測，算複雜數學題目容易出現「幻覺」算錯，無法執行真實試算表。</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="x-circle" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i>
+                <span><strong>老師依舊是搬運工：</strong>每次都要重新複製貼上背景，再手動複製產出去排版，耗時耗力。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs text-slate-500">
+            <strong>現場感受：</strong>「就像請了一個很博學的實習生，但每交辦一件事都要站在他身後一句一句盯著看。」
+          </div>
+        </div>
+
+        <!-- AI Agent -->
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50/50 rounded-2xl p-6 shadow-sm border-2 border-blue-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-3 mb-4">
+              <span class="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+              </span>
+              <div>
+                <h3 class="text-lg font-bold text-blue-950">智慧代理人 (AI Agent)</h3>
+                <p class="text-xs text-blue-600 font-medium">目標驅動・具備自主行動與工具能力</p>
+              </div>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-700 mb-6">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0"></i>
+                <span><strong>目標導向任務拆解：</strong>給予「依段考第 1 章錯題設計補救試卷」大目標，自動分步查課本、出題、驗算。</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0"></i>
+                <span><strong>真工具調用與驗證：</strong>自動執行代碼算式除錯、查詢最新教育局公文規章、匯出標準 Word/PDF。</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0"></i>
+                <span><strong>自我反思與糾錯（Reflection）：</strong>生成解答後主動驗算「答案是否合理？語氣是否符合親師倫理？」。</span>
+              </li>
+            </ul>
+          </div>
+          <div class="bg-blue-100/70 p-3 rounded-xl border border-blue-200 text-xs text-blue-900 font-medium">
+            <strong>現場感受：</strong>「就像擁有一個專業副手，只要交待目標與規範，他會自己找資料、跑程序、檢查無誤後交差！」
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE ARCHITECTURE EXPLORER -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-6">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">AI Agent 的五大核心運作要素（點擊探索）</h3>
+            <p class="text-sm text-slate-500">大腦（LLM）+ 眼睛（感知）+ 雙手（工具）+ 記憶庫（脈絡）+ 靈魂（自我反思）</p>
+          </div>
+          <span class="text-xs bg-slate-100 text-slate-600 px-3 py-1 rounded-full border border-slate-200">
+            互動圖解模組
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-6">
+          <button onclick="selectArch('perception')" id="arch-btn-perception" class="arch-btn p-3.5 rounded-2xl border text-center transition-all bg-blue-50 border-blue-400 text-blue-800 font-bold shadow-sm">
+            <i data-lucide="eye" class="w-6 h-6 mx-auto mb-1.5 text-blue-600"></i>
+            <span class="block text-sm">1. 感知環境</span>
+            <span class="text-[11px] text-slate-500 font-normal">Perception</span>
+          </button>
+          <button onclick="selectArch('planning')" id="arch-btn-planning" class="arch-btn p-3.5 rounded-2xl border border-slate-200 text-center transition-all hover:bg-slate-50 text-slate-700">
+            <i data-lucide="git-branch" class="w-6 h-6 mx-auto mb-1.5 text-amber-500"></i>
+            <span class="block text-sm">2. 規劃推理</span>
+            <span class="text-[11px] text-slate-500 font-normal">Planning</span>
+          </button>
+          <button onclick="selectArch('memory')" id="arch-btn-memory" class="arch-btn p-3.5 rounded-2xl border border-slate-200 text-center transition-all hover:bg-slate-50 text-slate-700">
+            <i data-lucide="database" class="w-6 h-6 mx-auto mb-1.5 text-purple-500"></i>
+            <span class="block text-sm">3. 記憶機制</span>
+            <span class="text-[11px] text-slate-500 font-normal">Memory</span>
+          </button>
+          <button onclick="selectArch('tools')" id="arch-btn-tools" class="arch-btn p-3.5 rounded-2xl border border-slate-200 text-center transition-all hover:bg-slate-50 text-slate-700">
+            <i data-lucide="wrench" class="w-6 h-6 mx-auto mb-1.5 text-emerald-500"></i>
+            <span class="block text-sm">4. 工具行動</span>
+            <span class="text-[11px] text-slate-500 font-normal">Tool Use</span>
+          </button>
+          <button onclick="selectArch('reflection')" id="arch-btn-reflection" class="arch-btn p-3.5 rounded-2xl border border-slate-200 text-center transition-all hover:bg-slate-50 text-slate-700 col-span-2 sm:col-span-1">
+            <i data-lucide="shield-check" class="w-6 h-6 mx-auto mb-1.5 text-rose-500"></i>
+            <span class="block text-sm">5. 反思評估</span>
+            <span class="text-[11px] text-slate-500 font-normal">Reflection</span>
+          </button>
+        </div>
+
+        <!-- Arch detail display card -->
+        <div id="arch-detail-card" class="bg-slate-50 rounded-2xl p-6 border border-slate-200 transition-all">
+          <!-- Dynamic Content loaded by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SECTION 2: TRIAD ==================== -->
+    <div id="section-triad" class="tab-content hidden space-y-8">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Prompt vs. Skill vs. Project：核心三要素徹底辨析</h2>
+        <p class="text-sm text-slate-500 mt-1">老師們最常問：「我已經會下 Prompt 了，為什麼還要知道 Skill 和 Project？」</p>
+      </div>
+
+      <!-- 3 CARDS OVERVIEW -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Prompt Card -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border-t-4 border-amber-400 border-x border-b border-slate-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider px-2 py-1 bg-amber-100 text-amber-800 rounded-md">單次指令</span>
+              <span class="text-2xl">📝</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">Prompt（提示詞）</h3>
+            <p class="text-xs text-amber-600 font-medium mb-4">口頭吩咐・便利貼上的交代</p>
+            <div class="space-y-2 text-sm text-slate-600">
+              <p><strong>本質：</strong>你在當下對話框中輸入的單次文字指令。</p>
+              <p><strong>生命週期：</strong>用完即丟，換一個視窗或明天重新打開就失效。</p>
+              <p><strong>最大痛點：</strong>如果想維持品質，每次都要重新打一大串限制與格式，累積大量無效重複。</p>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <span class="text-xs text-slate-400 block mb-1">學校實例</span>
+            <code class="text-xs bg-slate-100 text-slate-700 p-2 rounded block">「幫我把這段文字改成客氣一點的語氣發給家長。」</code>
+          </div>
+        </div>
+
+        <!-- Skill Card -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border-t-4 border-blue-500 border-x border-b border-slate-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider px-2 py-1 bg-blue-100 text-blue-800 rounded-md">標準SOP</span>
+              <span class="text-2xl">⚙️</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">Skill（技能模組）</h3>
+            <p class="text-xs text-blue-600 font-medium mb-4">專家工作法・隨調隨用的外掛能力</p>
+            <div class="space-y-2 text-sm text-slate-600">
+              <p><strong>本質：</strong>將特定任務的專業步驟、檢查清單與輸出格式打包成的模組。</p>
+              <p><strong>生命週期：</strong>常駐可用。AI 平時不佔用記憶，偵測到符合任務時自動載入（按需載入）。</p>
+              <p><strong>核心威力：</strong>將資深優良教師的教學/行政心法 SOP 化，任何新進老師呼叫都能產出高水準成果。</p>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <span class="text-xs text-slate-400 block mb-1">學校實例</span>
+            <code class="text-xs bg-slate-100 text-slate-700 p-2 rounded block">「親師衝突同理心溝通信生成 Skill」、「國中數學階梯式出題 Skill」</code>
+          </div>
+        </div>
+
+        <!-- Project Card -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border-t-4 border-emerald-500 border-x border-b border-slate-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider px-2 py-1 bg-emerald-100 text-emerald-800 rounded-md">工作環境</span>
+              <span class="text-2xl">📁</span>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">Project（專案空間）</h3>
+            <p class="text-xs text-emerald-600 font-medium mb-4">作戰指揮室・專屬背景知識庫</p>
+            <div class="space-y-2 text-sm text-slate-600">
+              <p><strong>本質：</strong>一個長期的工作區，常駐掛載特定文件庫（PDF/表格/規章）與專案守則。</p>
+              <p><strong>生命週期：</strong>長期持續，貫穿一整個學期、學年或重大活動籌備期。</p>
+              <p><strong>核心威力：</strong>AI 在這個專案內的所有回答，都自動「認識」該處室或該班級的背景脈絡，不用每次重說。</p>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <span class="text-xs text-slate-400 block mb-1">學校實例</span>
+            <code class="text-xs bg-slate-100 text-slate-700 p-2 rounded block">「701 班班級經營專案（內建學生特質與家長筆記）」、「南一數學 1 上專案」</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADVANCED CONCEPT: PROJECT VS WORKSPACE FOLDER (TEACHER'S METAPHOR) -->
+      <div class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-indigo-800/80">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 mb-6 pb-6 border-b border-indigo-800/60">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/30 text-indigo-300 text-xs font-semibold mb-2 border border-indigo-400/30">
+              <i data-lucide="compass" class="w-4 h-4"></i> Antigravity & AI Agent 核心配置解密
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              設定了 Project，為什麼還要指定「工作資料夾 (Folder / Workspace)」？
+            </h3>
+            <p class="text-indigo-200/90 text-xs sm:text-sm mt-1">
+              💡 現場老師神比喻：<span class="text-amber-300 font-bold">Project 就像「任務團隊」</span>，而 <span class="text-emerald-300 font-bold">資料夾就像「開會的教室或會議室」</span>！
+            </p>
+          </div>
+          <div class="flex items-center gap-1.5 bg-indigo-900/60 p-1.5 rounded-2xl border border-indigo-700/50 text-xs shrink-0">
+            <button onclick="switchFolderConceptTab('concept')" id="btn-fc-concept" class="fc-btn px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-bold transition-all shadow-sm">
+              🏢 概念解剖
+            </button>
+            <button onclick="switchFolderConceptTab('cases')" id="btn-fc-cases" class="fc-btn px-3 py-1.5 rounded-xl text-indigo-200 hover:text-white transition-all">
+              🏫 校園情境範例
+            </button>
+            <button onclick="switchFolderConceptTab('security')" id="btn-fc-security" class="fc-btn px-3 py-1.5 rounded-xl text-indigo-200 hover:text-white transition-all">
+              🔒 門禁與安全邊界
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: CONCEPT BREAKDOWN -->
+        <div id="fc-tab-concept" class="fc-tab-content block">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Project Card -->
+            <div class="bg-indigo-900/40 p-5 rounded-2xl border border-indigo-700/60 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center space-x-3 mb-3">
+                  <span class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-400/30 flex items-center justify-center font-bold text-xl">
+                    👥
+                  </span>
+                  <div>
+                    <h4 class="text-lg font-bold text-white">Project（專案）= 任務團隊</h4>
+                    <p class="text-xs text-amber-300">「我們是誰？我們的目標、規則與具備哪些技能？」</p>
+                  </div>
+                </div>
+                <ul class="space-y-2.5 text-xs sm:text-sm text-indigo-100/90 leading-relaxed">
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold">●</span>
+                    <span><strong>無形的心智與靈魂：</strong>定義了 Agent 的角色指令（System Prompt）、目標、溝通語氣與指導方針。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold">●</span>
+                    <span><strong>裝備與技能包（Skills）：</strong>規定了這個團隊配備了什麼法寶（例如：掛載「南一版國中數學階梯出題 Skill」、「親師三明治溝通 Skill」）。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-400 font-bold">●</span>
+                    <span><strong>長期記憶（Memory）：</strong>累積該團隊特有的決策偏好與歷史經驗。</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-4 pt-3 border-t border-indigo-700/50 text-xs text-amber-200/80">
+                <strong>學校比喻：</strong>「國中數學段考命題小組」或「校慶運動會籌備委員會」。
+              </div>
+            </div>
+
+            <!-- Folder Workspace Card -->
+            <div class="bg-indigo-900/40 p-5 rounded-2xl border border-indigo-700/60 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center space-x-3 mb-3">
+                  <span class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center justify-center font-bold text-xl">
+                    🚪
+                  </span>
+                  <div>
+                    <h4 class="text-lg font-bold text-white">Folder / Workspace = 會議室 / 實體場地</h4>
+                    <p class="text-xs text-emerald-300">「團隊今天在哪裡集合？桌面上擺放著哪些具體檔案？」</p>
+                  </div>
+                </div>
+                <ul class="space-y-2.5 text-xs sm:text-sm text-indigo-100/90 leading-relaxed">
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold">●</span>
+                    <span><strong>有形的物理空間與檔案庫：</strong>電腦硬碟中的具體路徑（例如：<code>c:\...\國中數學1上課本_全六冊\</code>）。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold">●</span>
+                    <span><strong>操作視野與權限邊界：</strong>Agent 只能看見並直接讀寫「這間會議室」內的 PDF 課本、試題 Word 檔或公文資料。</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-400 font-bold">●</span>
+                    <span><strong>產出存放處：</strong>Agent 跑完驗算生成的練習卷或擬辦公文，會直接儲存在這個資料夾桌面上。</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-4 pt-3 border-t border-indigo-700/50 text-xs text-emerald-200/80">
+                <strong>學校比喻：</strong>「第一會議室」、「教具與課本儲藏室」或「701 導師室」。
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: SCHOOL REAL-LIFE CASES -->
+        <div id="fc-tab-cases" class="fc-tab-content hidden">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Case A -->
+            <div class="bg-indigo-900/40 p-5 rounded-2xl border border-indigo-700/60">
+              <div class="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-wider mb-2">
+                <span>🔄 靈活性情境一</span>
+              </div>
+              <h4 class="font-bold text-white text-base mb-2">同一個團隊（Project），換到不同會議室（Folder）開會</h4>
+              <p class="text-xs sm:text-sm text-indigo-100/90 leading-relaxed mb-3">
+                你建立了一個**「國中數學命題小組 Project」**，裡面已經寫好南一版命題準則、防呆驗算 Skill 與排版規範。
+              </p>
+              <div class="space-y-2 text-xs bg-slate-900/60 p-3.5 rounded-xl border border-indigo-800">
+                <p class="text-slate-300">📍 <strong>第 1 次段考：</strong>把工作資料夾切換到 <code>國中數學1上_第1章因數分解/</code> ➔ Agent 立刻讀取該章 PDF 並出題。</p>
+                <p class="text-slate-300">📍 <strong>第 2 次段考：</strong>團隊成員與守則完全不用重寫！只需把工作資料夾切換到 <code>國中數學1上_第2章一元一次方程式/</code>，命題小組立刻在新場地就位！</p>
+              </div>
+            </div>
+
+            <!-- Case B -->
+            <div class="bg-indigo-900/40 p-5 rounded-2xl border border-indigo-700/60">
+              <div class="flex items-center gap-2 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-2">
+                <span>🏢 靈活性情境二</span>
+              </div>
+              <h4 class="font-bold text-white text-base mb-2">同一個會議室（Folder），借給不同團隊（Project）進駐</h4>
+              <p class="text-xs sm:text-sm text-indigo-100/90 leading-relaxed mb-3">
+                學校硬碟中有一個共同資料夾 <code>114活動_校慶籌辦資料夾/</code>，裡面堆滿活動企劃書、經費預算表與各班名冊。
+              </p>
+              <div class="space-y-2 text-xs bg-slate-900/60 p-3.5 rounded-xl border border-indigo-800">
+                <p class="text-slate-300">👥 <strong>上午「學務處活動小組 Project」進駐：</strong>專注於讀取趣味競賽項目，產出賽程時間表與志工分工單。</p>
+                <p class="text-slate-300">💼 <strong>下午「總務處經費核銷 Project」進駐：</strong>換不同專案靈魂進來，專注於檢核帳篷租借單據金額是否符合主計上限。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: SECURITY & BOUNDARY -->
+        <div id="fc-tab-security" class="fc-tab-content hidden">
+          <div class="bg-indigo-900/40 p-5 rounded-2xl border border-indigo-700/60">
+            <h4 class="font-bold text-white text-base mb-2 flex items-center gap-2">
+              <i data-lucide="shield-alert" class="w-5 h-5 text-amber-400"></i>
+              為什麼指定資料夾是校園資安的第一道防線？（門禁卡哲學）
+            </h4>
+            <p class="text-xs sm:text-sm text-indigo-100/90 leading-relaxed mb-4">
+              如果我們不指定資料夾，AI Agent 就等於拿著「全校萬用鑰匙」，可以在整台電腦硬碟中漫遊。這是極度危險的！
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div class="bg-slate-900/70 p-3.5 rounded-xl border border-indigo-800">
+                <span class="font-bold text-emerald-300 block mb-1">🛡️ 明確邊界（沙盒保護）</span>
+                <p class="text-slate-300">指定資料夾如同給 Agent 一張「僅限進入 701 會議室」的門禁卡，它的眼睛與雙手只能觸碰指定資料，絕不會越界。</p>
+              </div>
+              <div class="bg-slate-900/70 p-3.5 rounded-xl border border-indigo-800">
+                <span class="font-bold text-amber-300 block mb-1">🔒 保護個資與機密</span>
+                <p class="text-slate-300">避免 Agent 在搜尋時誤觸隔壁資料夾的「教職員人事考績」或「全校特教生鑑定病歷」，完全合乎個資保護法規。</p>
+              </div>
+              <div class="bg-slate-900/70 p-3.5 rounded-xl border border-indigo-800">
+                <span class="font-bold text-blue-300 block mb-1">⚡ 避免干擾與省運算</span>
+                <p class="text-slate-300">不需要讓 Agent 在幾萬個檔案裡大海撈針，專注在指定資料夾的 5 個檔案，反應更精準、速度快十倍！</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIVE SIMULATOR: PROMPT VS SKILL VS PROJECT -->
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-6">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">🎮 實機模擬器：體驗三者產出的巨大落差</h3>
+            <p class="text-sm text-slate-500">切換不同情境與模式，看看一般下指令與 Agent 系統化協作的差異</p>
+          </div>
+          <!-- Scenario Selector -->
+          <div class="flex items-center space-x-2">
+            <span class="text-xs text-slate-500 font-medium">切換情境：</span>
+            <select id="sim-scenario-select" onchange="updateSimulator()" class="bg-slate-100 border border-slate-300 text-slate-800 text-xs sm:text-sm rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium">
+              <option value="math">📐 國中數學：因數分解階梯出題與錯因</option>
+              <option value="classroom">👨‍🏫 班級經營：體育課衝突親師通訊草稿</option>
+              <option value="admin">🏛️ 學校行政：教育局計畫公文速讀簽呈</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Mode Buttons -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          <button onclick="setSimMode('prompt')" id="sim-mode-prompt" class="sim-mode-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-amber-500 text-white shadow-sm">
+            ① 僅用單次 Prompt（一般教師常見做法）
+          </button>
+          <button onclick="setSimMode('skill')" id="sim-mode-skill" class="sim-mode-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200">
+            ② 掛載專業 Skill（SOP 引導品質翻倍）
+          </button>
+          <button onclick="setSimMode('project')" id="sim-mode-project" class="sim-mode-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200">
+            ③ 完整 Project + Agent（自主閉環與專屬脈絡）
+          </button>
+        </div>
+
+        <!-- Simulator Result Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Input Inspector -->
+          <div class="lg:col-span-5 bg-slate-50 rounded-2xl p-5 border border-slate-200 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span id="sim-input-badge" class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">輸入指令分析</span>
+                <span id="sim-input-status" class="text-xs text-slate-400">零背景依託</span>
+              </div>
+              <h4 id="sim-input-title" class="text-sm font-bold text-slate-800 mb-2">指令內容</h4>
+              <div id="sim-input-content" class="text-xs font-mono bg-white p-3.5 rounded-xl border border-slate-200 text-slate-700 whitespace-pre-line leading-relaxed max-h-64 overflow-y-auto custom-scrollbar">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+            <div id="sim-input-note" class="mt-4 pt-3 border-t border-slate-200 text-xs text-slate-500">
+              <!-- Loaded dynamically -->
+            </div>
+          </div>
+
+          <!-- Output Inspector -->
+          <div class="lg:col-span-7 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span id="sim-output-badge" class="text-xs font-bold px-2.5 py-0.5 rounded bg-blue-100 text-blue-800">AI 實際生成結果</span>
+                <span id="sim-output-quality" class="text-xs font-semibold text-emerald-600">品質評級：⭐ 普通</span>
+              </div>
+              <div id="sim-output-content" class="text-xs sm:text-sm bg-slate-50 p-4 rounded-xl border border-slate-200 text-slate-800 whitespace-pre-line leading-relaxed max-h-80 overflow-y-auto custom-scrollbar">
+                <!-- Loaded dynamically -->
+              </div>
+            </div>
+            <div id="sim-output-verdict" class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <!-- Loaded dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SECTION 3: SCENARIOS ==================== -->
+    <div id="section-scenarios" class="tab-content hidden space-y-8">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">三大核心場景：讓 AI Agent 在校園深耕落地</h2>
+        <p class="text-sm text-slate-500 mt-1">緊扣教育現場痛點，提供具體可操作的 Agent 解決方案與實例</p>
+      </div>
+
+      <!-- SCENARIO SUB-TABS -->
+      <div class="flex space-x-2 border-b border-slate-200 pb-2">
+        <button onclick="switchScenarioSub('s-classroom')" id="sub-btn-classroom" class="scenario-sub-btn px-4 py-2 rounded-xl text-sm font-bold bg-blue-600 text-white shadow-sm">
+          👨‍🏫 1. 教師班級經營篇
+        </button>
+        <button onclick="switchScenarioSub('s-math')" id="sub-btn-math" class="scenario-sub-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100">
+          📐 2. 國中數學專業篇 (南一教材)
+        </button>
+        <button onclick="switchScenarioSub('s-admin')" id="sub-btn-admin" class="scenario-sub-btn px-4 py-2 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-100">
+          🏛️ 3. 學校行政工作篇
+        </button>
+      </div>
+
+      <!-- SUB 1: CLASSROOM MANAGEMENT -->
+      <div id="scenario-sub-classroom" class="scenario-sub-content block space-y-6">
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-200">
+          <h3 class="text-lg font-bold text-blue-950 flex items-center gap-2">
+            <i data-lucide="heart-handshake" class="w-5 h-5 text-blue-600"></i>
+            導師日常解圍：從「情緒消耗戰」到「同理心專業溝通」
+          </h3>
+          <p class="text-sm text-blue-800/80 mt-1">
+            國中導師每天面對各種突發狀況：搶球打架、網路言語糾紛、常規拖拉、作業遲交。透過建立班級經營專案與溝通 Skill，導師能以最少的時間成本，輸出最高情商的親師信。
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center font-bold mb-3">1</div>
+            <h4 class="font-bold text-slate-900 mb-2">親師溝通「三明治同理心」Skill</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>痛點：</strong>家長護子心切容易防衛，導師直話直說常被投訴態度不佳。<br>
+              <strong>Agent 流程：</strong>嚴格遵守「優點肯定 ➔ 客觀陳述事實 ➔ 學校當下處置與孩子反思 ➔ 邀約親師攜手」四部曲，自動避開指責性字眼。
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold mb-3">2</div>
+            <h4 class="font-bold text-slate-900 mb-2">學生行為歷程與輔導轉介 Project</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>痛點：</strong>平時瑣碎的晤談紀錄分散，期末要寫輔導 B 表或送特教心評時無從下手。<br>
+              <strong>Agent 流程：</strong>日常以簡短語音或文字備忘存入 Project，Agent 自動建立學生個別化時間軸，一鍵生成合規之結構化個案輔導摘要。
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center font-bold mb-3">3</div>
+            <h4 class="font-bold text-slate-900 mb-2">班級亮點捕捉與正向激勵 Agent</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>痛點：</strong>常規優良的「乖學生」往往被忽略，缺乏家長回饋。<br>
+              <strong>Agent 流程：</strong>自動盤點每週各組表現，主動起草「本週小天使肯定小卡」，發給默默付出的學生家長，極大增進班級凝聚力。
+            </p>
+          </div>
+        </div>
+
+        <!-- Practical Template Card -->
+        <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-md">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-blue-500 text-white">可直接複製的 Skill 規範</span>
+              <span class="text-xs text-slate-400">Parent-Communication-SOP.md</span>
+            </div>
+            <button onclick="copyToClipboard('code-cm-template')" class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300 flex items-center gap-1">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> 複製範本
+            </button>
+          </div>
+          <pre id="code-cm-template" class="text-xs font-mono bg-slate-950 p-4 rounded-xl text-slate-300 overflow-x-auto leading-relaxed whitespace-pre-wrap">
+# 技能名稱：親師溫暖溝通信生成器 (Parent-Communication-Skill)
+# 觸發條件：當老師輸入學生的突發違規、同學衝突或學習低落事件時觸發
+
+[執行原則]
+1. 嚴格遵守「非暴力溝通」架構，絕不使用主觀道德批判詞（如：屢勸不聽、態度惡劣、死不認錯）。
+2. 首段必須從孩子的某一特質找到正向肯定點（如：榮譽心強、很有主見、熱愛運動）。
+3. 第二段客觀陳述「人、事、時、地、物」，並加入學生向老師說明的受傷心境，讓家長感受到老師有傾聽。
+4. 第三段說明校方當下的安全處置與雙方和解進度。
+5. 末段提出親師合作的同盟邀請，結尾給予家長溫暖支持。
+          </pre>
+        </div>
+      </div>
+
+      <!-- SUB 2: MATH TEACHING -->
+      <div id="scenario-sub-math" class="scenario-sub-content hidden space-y-6">
+        <div class="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-2xl border border-emerald-200">
+          <h3 class="text-lg font-bold text-emerald-950 flex items-center gap-2">
+            <i data-lucide="calculator" class="w-5 h-5 text-emerald-600"></i>
+            國中數學專業備課：南一版 1 上「因數分解與負數運算」精準落地
+          </h3>
+          <p class="text-sm text-emerald-800/80 mt-1">
+            國中數學最大的難題在於「雙峰現象極度嚴重」與「死記口訣導致概念混淆」。AI Agent 能扮演「資深命題委員 + 錯因診斷醫生」，讓分層出題與概念補救不再需要耗費一整晚！
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold mb-3">1</div>
+            <h4 class="font-bold text-slate-900 mb-2">認知鷹架三階階梯出題</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>教材對照：</strong>南一第 1 章第 2 節「質因數分解與最大公因數」。<br>
+              <strong>Agent 流程：</strong>自動生成【A 級基礎短除法計算】➔【B 級標準分解式指數取法】➔【C 級生活應用排隊切分題】，每題自帶逐步引導鷹架。
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-teal-100 text-teal-600 flex items-center justify-center font-bold mb-3">2</div>
+            <h4 class="font-bold text-slate-900 mb-2">學生錯因自動診斷與微補救</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>常見痛點：</strong>學生寫 \( \text{GCD}(72, 108) = 216 \)，死背口訣卻不知因數不能大於原數。<br>
+              <strong>Agent 流程：</strong>Agent 辨識出迷思概念（將 GCD 次方與 LCM 次方搞混），自動生成蘇格拉底式提問與 1 題同質微補救單。
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-cyan-100 text-cyan-600 flex items-center justify-center font-bold mb-3">3</div>
+            <h4 class="font-bold text-slate-900 mb-2">代碼驗算與排版自動化（Tool Calling）</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>避免幻覺：</strong>傳統 AI 常常在生成素養題時把數字出成無解或分數非整數。<br>
+              <strong>Agent 流程：</strong>Agent 自行調用 Python 解題驗算，確保題目數字整除且無邏輯瑕疵，並自動轉為 LaTeX 或 Word 格式。
+            </p>
+          </div>
+        </div>
+
+        <!-- Math Case Box -->
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2">
+            <i data-lucide="check-square" class="w-5 h-5 text-emerald-600"></i>
+            實戰對比：南一 1 上數學錯題 10 秒生成精準補救
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+              <span class="font-bold text-red-600 block mb-1">❌ 過去做法（傳統死背或重複寫大卷）</span>
+              <p class="text-slate-600 leading-relaxed">
+                發一張 20 題的考卷叫學生重寫，學生因為不懂原理只覺得被懲罰，依然在 GCD 與 LCM 的指數挑選上亂猜，雙峰差距持續擴大。
+              </p>
+            </div>
+            <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200">
+              <span class="font-bold text-emerald-800 block mb-1">✔ Agent 賦能做法（概念深究）</span>
+              <p class="text-emerald-900 leading-relaxed">
+                Agent 自動提問：「216 可以整除 72 嗎？既然是要『共同因數』，能比原本的數字還大嗎？」一秒擊中概念核心，再配 1 題自檢題即完成補救。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUB 3: ADMINISTRATIVE WORK -->
+      <div id="scenario-sub-admin" class="scenario-sub-content hidden space-y-6">
+        <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-2xl border border-amber-200">
+          <h3 class="text-lg font-bold text-amber-950 flex items-center gap-2">
+            <i data-lucide="building" class="w-5 h-5 text-amber-600"></i>
+            學校行政減量：公文簽呈、活動管考與核銷合規性審查
+          </h3>
+          <p class="text-sm text-amber-800/80 mt-1">
+            行政組長與主任常被大量的教育局長篇公文、複雜的主計核銷規定、跨處室活動協調追著跑。透過建置校園行政專案與標準簽核 Skill，文書處理速度提升 80% 以上！
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-bold mb-3">1</div>
+            <h4 class="font-bold text-slate-900 mb-2">15 頁公文 10 秒結構化萃取</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>痛點：</strong>教育局計畫書動輒十幾頁，文字官樣繁複，很容易漏看申辦截止日或經費比例限制。<br>
+              <strong>Agent 流程：</strong>自動抓取「發文字號、承辦單位、申請期限、經常門/資本門額度、必要成果指標」，條列式呈現。
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-800 flex items-center justify-center font-bold mb-3">2</div>
+            <h4 class="font-bold text-slate-900 mb-2">正式簽呈自動擬辦 (Drafting)</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>痛點：</strong>新接行政的組長不知道「主旨、說明、擬辦」該如何寫才合乎主管與校長要求。<br>
+              <strong>Agent 流程：</strong>套用「校內簽呈公文 Skill」，自動擬定「主旨明確、說明引用函號、擬辦具體會核處室」之標準簽稿。
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-800 flex items-center justify-center font-bold mb-3">3</div>
+            <h4 class="font-bold text-slate-900 mb-2">主計核銷法規合規性查驗</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>痛點：</strong>外聘專家鐘點費是否合規？二代健保補充保費是否有扣？預算項目是否平衡？<br>
+              <strong>Agent 流程：</strong>掛載縣市主計報支標準，上傳預算表自動執行欄位檢查，預先標註瑕疵避免退件。
+            </p>
+          </div>
+        </div>
+
+        <!-- Admin Flow Card -->
+        <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-md">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-bold px-2.5 py-1 rounded bg-amber-500 text-white">行政公文簽呈擬辦 SOP 規範</span>
+              <span class="text-xs text-slate-400">School-Official-Doc-Skill.md</span>
+            </div>
+            <button onclick="copyToClipboard('code-admin-template')" class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300 flex items-center gap-1">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> 複製範本
+            </button>
+          </div>
+          <pre id="code-admin-template" class="text-xs font-mono bg-slate-950 p-4 rounded-xl text-slate-300 overflow-x-auto leading-relaxed whitespace-pre-wrap">
+# 技能名稱：校園公文速讀與簽呈擬辦 (School-Official-Doc-Skill)
+# 觸發條件：上傳或貼上教育局處長篇來文、實施計畫時
+
+[簽呈輸出規範]
+1. 主旨：一句話講完「有關...乙案，簽請 核示。」
+2. 說明：
+   - 第一點：依 [來文機關] [日期] [發文字號] 函辦理。
+   - 第二點：簡述計畫核心補助額度（標明經常門與資本門）及對本校之效益。
+   - 第三點：說明本校配合辦理之事項（如校內研習場次、成果報告提送）。
+3. 擬辦：
+   - 第一點：陳核後由 [承辦單位] 會同 [相關領域教師] 依限提送計畫書。
+   - 第二點：會請總務處（估價）、會計室（編列預算）後陳報局端。
+   - 第三點：陳請 校長核示。
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SECTION 4: GLOSSARY & AGI ==================== -->
+    <div id="section-glossary" class="tab-content hidden space-y-8">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">專業名詞大解鎖：不再被科技火星話困擾</h2>
+        <p class="text-sm text-slate-500 mt-1">從 AGI 到 MCP，用教育工作者最容易理解的白話全盤梳理</p>
+      </div>
+
+      <!-- SEARCH / FILTER -->
+      <div class="flex items-center space-x-3 bg-white p-2 rounded-2xl border border-slate-200 shadow-sm max-w-md">
+        <i data-lucide="search" class="w-5 h-5 text-slate-400 ml-2"></i>
+        <input type="text" id="glossary-search" oninput="filterGlossary()" placeholder="搜尋關鍵字（例如：AGI、MCP、記憶、多代理人）..." class="w-full text-sm outline-none bg-transparent text-slate-700 placeholder-slate-400">
+      </div>
+
+      <!-- GLOSSARY CARDS GRID -->
+      <div id="glossary-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- AGI -->
+        <div class="glossary-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-keyword="agi 通用人工智慧 未來 人類心智 演進">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-purple-100 text-purple-800">終極願景</span>
+              <span class="text-xs text-slate-400">Artificial General Intelligence</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">AGI (通用人工智慧)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              具備與人類相當甚至超越人類的廣泛認知能力，能在<strong>各種未見過的新環境</strong>中自主學習、推理與解決問題的終極 AI。相對於過去只能下圍棋的 Narrow AI，未來的 AGI 能像資深校長般綜合統籌各類學科與校務！
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-purple-700 font-medium">
+            💡 關鍵連結：AI Agent 被公認為當前通往 AGI 最關鍵的一躍！
+          </div>
+        </div>
+
+        <!-- LLM vs AGENT -->
+        <div class="glossary-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-keyword="llm 大語言模型 大腦 agent 代理人 差異">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">核心基石</span>
+              <span class="text-xs text-slate-400">Large Language Model</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">LLM vs. AI Agent</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              <strong>LLM 是「大腦」</strong>，擅長理解語言與推測字詞；<strong>AI Agent 是「完整的人」</strong>，擁有了大腦（LLM）、眼睛（感知輸入）、手腳（工具調用 API）與筆記本（長期記憶與外部資料夾）。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-blue-700 font-medium">
+            💡 譬喻：LLM 是裝滿知識的腦神經，Agent 是走到操場執行的體育老師。
+          </div>
+        </div>
+
+        <!-- MCP -->
+        <div class="glossary-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-keyword="mcp 模型上下文協議 協議 工具 外部資料 插座 anthropic">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">最新架構標準</span>
+              <span class="text-xs text-slate-400">Model Context Protocol</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">MCP (模型上下文協議)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              由 Anthropic 推出的開放通訊協定，如同<strong>「AI 界的 Type-C 通用插座」</strong>。讓不同的 AI 代理人可以安全且標準化地插拔學校的 Google 雲端硬碟、資料庫、本機文件夾與特殊教學工具。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-amber-800 font-medium">
+            💡 優勢：不用再為每個校務系統個別寫客製連接程式。
+          </div>
+        </div>
+
+        <!-- MULTI AGENT -->
+        <div class="glossary-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-keyword="multi-agent 多代理人 協同 處室 團隊 分工">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-indigo-100 text-indigo-800">團隊協作</span>
+              <span class="text-xs text-slate-400">Multi-Agent System</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Multi-Agent (多代理人協作)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              由多個各自扮演專業角色的 Agent 組成的團隊。例如出段考試卷：<strong>出題 Agent</strong> 負責出題 ➔ <strong>驗算 Agent</strong> 負責跑代碼解題並檢查答案 ➔ <strong>排版 Agent</strong> 轉成雙欄試卷。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-indigo-700 font-medium">
+            💡 核心精神：分工合作比讓單一 AI 做所有事情穩定度高出十倍！
+          </div>
+        </div>
+
+        <!-- TOOL / FUNCTION CALLING -->
+        <div class="glossary-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-keyword="tool calling function calling 工具調用 計算機 執行代碼">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">行動能力</span>
+              <span class="text-xs text-slate-400">Function Calling</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Tool Calling (工具調用)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              AI 發現自己光靠推理可能算錯或資料不足時，主動發起呼叫外部程式的行為。例如呼叫「Python 解題環境」算因數、呼叫「Google 搜尋」查最新教育法規、呼叫「檔案讀取器」開公文。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-emerald-700 font-medium">
+            💡 徹底解決：徹底根除大語言模型算數容易算錯與幻覺的問題。
+          </div>
+        </div>
+
+        <!-- HUMAN IN THE LOOP -->
+        <div class="glossary-card bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between" data-keyword="human in the loop 人在迴圈中 人機協同 審查 責任 倫理">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-100 text-rose-800">安全防線</span>
+              <span class="text-xs text-slate-400">Human-in-the-Loop</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mb-2">Human-in-the-Loop (人在迴圈中)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              雖然 Agent 具備高自主性，但在關鍵節點（如：<strong>成績定稿、公文正式核章送出、牽涉學生輔導隱私的敏感親師信發布</strong>），必須由真實人類教師/行政主管親自核准。
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-rose-700 font-medium">
+            💡 教育核心：AI 是最強副駕駛，老師才是掌握方向盤與溫度的機長。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SECTION 5: QUIZ ==================== -->
+    <div id="section-quiz" class="tab-content hidden space-y-8">
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">🎯 研習觀念隨堂小試身手</h2>
+        <p class="text-sm text-slate-500 mt-1">5 道情境實戰題目，檢測您是否已經掌握 AI Agent 的核心邏輯！</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200">
+        <!-- Quiz progress -->
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+          <div class="text-sm font-bold text-slate-700">測驗進度：<span id="quiz-progress-text" class="text-blue-600">第 1 / 5 題</span></div>
+          <div class="text-sm font-bold text-slate-700">目前得分：<span id="quiz-score-text" class="text-emerald-600">0 分</span></div>
+        </div>
+
+        <!-- Question Container -->
+        <div id="quiz-card" class="space-y-6">
+          <div class="bg-blue-50/60 p-4 rounded-2xl border border-blue-100">
+            <span id="quiz-category" class="text-xs font-bold px-2.5 py-1 rounded bg-blue-500 text-white inline-block mb-2">概念辨析</span>
+            <h3 id="quiz-question" class="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+              問題載入中...
+            </h3>
+          </div>
+
+          <div id="quiz-options" class="space-y-3">
+            <!-- Loaded dynamically -->
+          </div>
+
+          <!-- Feedback Box -->
+          <div id="quiz-feedback" class="hidden p-4 rounded-xl border text-xs sm:text-sm leading-relaxed">
+            <!-- Loaded dynamically -->
+          </div>
+
+          <!-- Action buttons -->
+          <div class="flex justify-between items-center pt-4">
+            <button onclick="prevQuestion()" id="quiz-prev-btn" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-medium border border-slate-300 text-slate-600 hover:bg-slate-50 disabled:opacity-30 disabled:pointer-events-none">
+              上一題
+            </button>
+            <button onclick="nextQuestion()" id="quiz-next-btn" class="px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-blue-600 text-white hover:bg-blue-700 shadow-sm">
+              下一題 ➔
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="flex items-center space-x-2">
+        <i data-lucide="graduation-cap" class="w-5 h-5 text-blue-400"></i>
+        <span class="text-slate-300 font-semibold">AI Agent 教育與行政應用實踐教材包</span>
+        <span>|</span>
+        <span>南一版國中數學對齊教材</span>
+      </div>
+      <div>
+        建議搭配研習簡報檔（.pptx）與自訂技能手冊共同使用・讓科技溫暖教育
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // TAB SWITCHING
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white', 'font-semibold');
+        btn.classList.add('text-slate-300', 'hover:text-white', 'hover:bg-slate-700');
+      });
+
+      const target = document.getElementById('section-' + tabId);
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+      if (target) target.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.add('bg-blue-600', 'text-white', 'font-semibold');
+        activeBtn.classList.remove('text-slate-300', 'hover:text-white', 'hover:bg-slate-700');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // SCENARIO SUB-TAB SWITCHING
+    function switchScenarioSub(subId) {
+      document.querySelectorAll('.scenario-sub-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.scenario-sub-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm', 'font-bold');
+        btn.classList.add('text-slate-600', 'hover:bg-slate-100', 'font-medium');
+      });
+
+      if (subId === 's-classroom') {
+        document.getElementById('scenario-sub-classroom').classList.remove('hidden');
+        const b = document.getElementById('sub-btn-classroom');
+        b.classList.add('bg-blue-600', 'text-white', 'shadow-sm', 'font-bold');
+        b.classList.remove('text-slate-600', 'hover:bg-slate-100', 'font-medium');
+      } else if (subId === 's-math') {
+        document.getElementById('scenario-sub-math').classList.remove('hidden');
+        const b = document.getElementById('sub-btn-math');
+        b.classList.add('bg-blue-600', 'text-white', 'shadow-sm', 'font-bold');
+        b.classList.remove('text-slate-600', 'hover:bg-slate-100', 'font-medium');
+      } else if (subId === 's-admin') {
+        document.getElementById('scenario-sub-admin').classList.remove('hidden');
+        const b = document.getElementById('sub-btn-admin');
+        b.classList.add('bg-blue-600', 'text-white', 'shadow-sm', 'font-bold');
+        b.classList.remove('text-slate-600', 'hover:bg-slate-100', 'font-medium');
+      }
+    }
+
+    // ARCHITECTURE EXPLORER DATA
+    const archData = {
+      perception: {
+        title: "1. 感知環境 (Perception)",
+        icon: "eye",
+        color: "text-blue-600",
+        summary: "Agent 接收外界多模態訊號的大門",
+        desc: "大語言模型平時坐在暗室中，而「感知模組」讓它看見外面世界。它能精準讀取課本 PDF 目錄、學生作業手寫辨識結果、親師聯絡簿文字、以及校務系統匯出的學生成績 Excel 檔案。",
+        eduExample: "【數學教學】：讀入南一國中數學 1 上第一章課本 PDF，識別目前單元為「因數分解與分數運算」，得知課綱要求不超過四位數的質因數分解。"
+      },
+      planning: {
+        title: "2. 規劃與推理 (Planning & Reasoning)",
+        icon: "git-branch",
+        color: "text-amber-500",
+        summary: "思維鏈 (CoT) 與 ReAct 邏輯：先想好步驟再行動",
+        desc: "Agent 不會衝動直接噴出一段長文，而是將複雜的大目標拆解成循序漸進的小任務：① 診斷題目 ➔ ② 查找教材對應範圍 ➔ ③ 調用工具驗算 ➔ ④ 排版產出。",
+        eduExample: "【行政簽呈】：收到 20 頁的教育局計畫書，Agent 先規劃「萃取核心 ➔ 查詢主計額度標準 ➔ 會辦總務資訊 ➔ 擬定簽呈草案」的四步流程。"
+      },
+      memory: {
+        title: "3. 記憶機制 (Memory System)",
+        icon: "database",
+        color: "text-purple-500",
+        summary: "短期對話記憶 + 長期專案知識沉澱",
+        desc: "短期記憶記錄當前對話上下文；長期記憶則透過知識庫向量檢索（RAG）或專案資料夾，永遠記住 701 班有哪些特教需求學生、每位家長的通訊偏好、以及學校歷年的簽呈格式慣例。",
+        eduExample: "【班級經營】：老師輸入「小明今天又發脾氣了」，Agent 自動調出過去兩個月小明的 3 次衝突紀錄，發現皆發生於「體育課分組受挫」，提供精準輔導建議。"
+      },
+      tools: {
+        title: "4. 工具調用與行動 (Tool Use & Actions)",
+        icon: "wrench",
+        color: "text-emerald-500",
+        summary: "跳出對話框：長出操作現實系統的雙手",
+        desc: "大語言模型算數學常常算錯，但 Agent 可以主動開啟 Python 直譯器執行短除法算式驗算、調用搜尋引擎核對最新公文規章、或直接把內容寫入 Word、PPT 或 Google 日曆中。",
+        eduExample: "【避免算錯】：在為學生出質因數分解試卷時，Agent 自己在背景跑一段代碼驗證 2^3 × 3^2 確實等於 72，並確認沒有無解或題意矛盾。"
+      },
+      reflection: {
+        title: "5. 反思與評估 (Reflection & Self-Correction)",
+        icon: "shield-check",
+        color: "text-rose-500",
+        summary: "交卷前的自我檢查與迭代優化",
+        desc: "高品質 Agent 最具革命性的能力：在把結果交給老師之前，自己先當自己的嚴格考官。檢查項目包括：語氣是否過於嚴厲？題目是否有超出國一範圍？算式答案是否有漏？",
+        eduExample: "【親師溝通】：Agent 寫完草稿後自檢發現「有一句話提到『孩子情緒控管極差』太過刺耳」，主動在交給導師前修正為「孩子正在練習如何合宜表達委屈與憤怒」。"
+      }
+    };
+
+    function selectArch(key) {
+      document.querySelectorAll('.arch-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-50', 'border-blue-400', 'text-blue-800', 'font-bold', 'shadow-sm');
+        btn.classList.add('border-slate-200', 'text-slate-700');
+      });
+      const activeBtn = document.getElementById('arch-btn-' + key);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-blue-50', 'border-blue-400', 'text-blue-800', 'font-bold', 'shadow-sm');
+        activeBtn.classList.remove('border-slate-200', 'text-slate-700');
+      }
+
+      const item = archData[key];
+      const container = document.getElementById('arch-detail-card');
+      container.innerHTML = `
+        <div class="flex items-center space-x-3 mb-3">
+          <span class="w-8 h-8 rounded-xl bg-white shadow-sm flex items-center justify-center font-bold ${item.color}">
+            <i data-lucide="${item.icon}" class="w-5 h-5"></i>
+          </span>
+          <div>
+            <h4 class="font-bold text-slate-900 text-base">${item.title}</h4>
+            <p class="text-xs text-slate-500 font-medium">${item.summary}</p>
+          </div>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4">${item.desc}</p>
+        <div class="bg-white p-3.5 rounded-xl border border-slate-200 text-xs text-slate-600">
+          <span class="font-bold text-slate-800 block mb-1">🏫 教育現場實踐範例：</span>
+          ${item.eduExample}
+        </div>
+      `;
+      lucide.createIcons();
+    }
+    // Initialize default arch selection
+    selectArch('perception');
+
+    // LIVE SIMULATOR DATA
+    const simData = {
+      math: {
+        prompt: {
+          badge: "單次 Prompt 模式",
+          status: "無脈絡、無驗證",
+          title: "教師直接輸入的文字：",
+          input: "「請幫我出 3 題國中數學因數分解的題目，附答案。」",
+          note: "⚠️ 缺點：AI 不知道是國一還是國二、不知道版本與程度，隨意吐出題目，且算式可能出錯。",
+          quality: "⭐ 基礎堪用",
+          output: `1. 求 24 的所有因數。
+答案：1, 2, 3, 4, 6, 8, 12, 24
+
+2. 求 36 與 48 的最大公因數。
+答案：12
+
+3. 求 150 的質因數分解。
+答案：150 = 2 × 3 × 5^2`,
+          verdict: "產出過於死板單調，未分階梯難度，未提供引導解說，更無法對應班上學習落後群。"
+        },
+        skill: {
+          badge: "掛載 國中數學階梯出題 Skill",
+          status: "結構化 SOP 規範",
+          title: "輸入搭配 Skill 引導：",
+          input: `執行【南一 1 上數學階梯出題 Skill】
+單元：因數分解與最大公因數
+對象：班級落後群學生
+要求：
+- 題目需分為「A級暖身基礎」、「B級標準分解式概念」、「C級生活素養」
+- 每題必須提供啟發式解題引導口訣，不能直接給死答案。`,
+          note: "✨ 優勢：依循專家設定的教學鷹架，產出符合認知層次的階梯題組。",
+          quality: "⭐⭐⭐⭐ 專業優良",
+          output: `【A 級：暖身基礎題（短除法熟練）】
+題目：請用短除法求出 45 的標準分解式。
+引導提示：先用最小質數 3 開始除，想想 45 ÷ 3 = 15，15 還能再被誰整除？
+詳解：45 = 3^2 × 5
+
+【B 級：概念精熟題（指數選取迷思除錯）】
+題目：已知 A = 2^3 × 3^2，B = 2^2 × 3^3，求 GCD(A, B) 與 LCM(A, B)。
+引導提示：記得口訣「最大公因數取共同的【較小次方】；最小公倍數取所有質因數的【較大次方】」！
+詳解：
+• GCD(A, B) = 2^2 × 3^2 = 36
+• LCM(A, B) = 2^3 × 3^3 = 216
+
+【C 級：生活情境素養題】
+題目：學校校慶有 48 顆蘋果與 60 顆橘子，想平均分裝成水果籃給貴賓，每籃蘋果與橘子都要一樣多，最多可以裝幾籃？每籃有幾顆蘋果？
+詳解：求 48 與 60 的最大公因數 = 12 籃；每籃蘋果 48 ÷ 12 = 4 顆。`,
+          verdict: "完美符合 108 課綱認知分層，具備解題鷹架與口訣，可直接印給學生作為差異化學習單。"
+        },
+        project: {
+          badge: "南一數學 1 上 Project + Agent 自主閉環",
+          status: "全自主、真驗算、自適應",
+          title: "交代目標給 Agent：",
+          input: `「Agent，請比對本班（701班）第一次段考第 1 章的錯題分析表，針對班上 6 位在『標準分解式指數選取混淆』的同學，自主調用 Python 驗算生成一組客製化微補救學習單，並附上自動排版的 Word 試卷檔。」`,
+          note: "🚀 Agent 自主行動：自動讀取本班錯題資料庫 ➔ 啟動 Python 代碼驗算確認題目可整除 ➔ 輸出可列印試卷。",
+          quality: "⭐⭐⭐⭐⭐ 自主卓越",
+          output: `[Agent 執行歷程日誌]
+1. 檢索 701 班段考分析：鎖定座號 3, 7, 12, 18, 25, 31 號同學（錯題集中於第一題短除法後次方取錯）。
+2. 調用 Python 工具：執行 \`math_verify.py\`，驗證題庫數據，確保 A=2^2*3*5 與 B=2*3^2*5 的 GCD/LCM 數值正確無矛盾。
+3. 自動生成 701 班專屬【標準分解式突破小卡】：
+   • 核心痛點喚醒：為什麼公因數絕對不可能大於原本的數字？
+   • 階梯練習 2 題（附帶自主檢查打勾方塊）。
+4. 成果產出：已在專案資料夾產出【701_因數分解微補救卷_A4雙欄排版.docx】供老師一鍵列印！`,
+          verdict: "徹底解放教師時間！不只出題，還包辦了對照名單、防呆驗算與試卷美編排版。"
+        }
+      },
+      classroom: {
+        prompt: {
+          badge: "單次 Prompt 模式",
+          status: "無脈絡、易生硬",
+          title: "教師直接輸入的文字：",
+          input: "「小明今天跟小華搶籃球打架，把小華推受傷了，幫我寫一封信給小明媽媽叫她管教小孩。」",
+          note: "⚠️ 缺點：語氣容易偏激，引發家長強烈防衛心理與投訴危機。",
+          quality: "⭐ 容易引發衝突",
+          output: `小明媽媽您好：
+今天在體育課時，小明因為搶籃球跟小華發生肢體衝突，小明把小華推倒導致小華手肘擦傷。請媽媽在家務必嚴格管教小明，告訴他在學校不可以打人，以免影響班級常規。`,
+          verdict: "直接指責家長與學生，完全缺乏同理心與事件脈絡，非常容易演變成家長到校理論。"
+        },
+        skill: {
+          badge: "掛載 親師溝通同理心 Skill",
+          status: "非暴力溝通規範",
+          title: "輸入搭配 Skill 引導：",
+          input: `執行【親師同理心溝通 Skill】
+事件：小明體育課搶球推了小華一把，小華擦傷已擦藥。小明事後委屈哭泣，說小華罵他矮才動手。小明媽媽防衛心較重。
+要求：
+- 必須肯定小明的優點
+- 客觀還原事件與小明的受挫心境
+- 說明校方處置與兩人和解狀況
+- 邀請家長並肩引導孩子學習情緒表達`,
+          note: "✨ 優勢：嚴格依照「三明治架構」，兼顧教育立場與家長感受。",
+          quality: "⭐⭐⭐⭐ 溫暖專業",
+          output: `小明媽媽您好：
+小明在班上一向很有正義感且熱愛運動，這是非常棒的特質。今天想跟媽媽分享下午體育課發生的一件小插曲：
+
+今天在籃球場上孩子們因爭球發生口角，小明一時情急推了小華一下，小華手肘有輕微擦傷，已立刻至健康中心消毒冰敷。老師在導師室陪伴小明平復心情時，小明委屈落淚，主動告訴我對方的話讓他覺得很受傷。
+
+老師肯定小明願意誠實說出心裡的感受，但也引導他思考：肢體推人很危險。小明已主動向小華表達歉意。
+
+孩子正在學習面對憤怒時的合宜表達，今晚回家時請媽媽也給小明一個擁抱，我們可以一起引導他：「感到委屈時，除了動手還有哪些更好的抗議方式？」感謝媽媽一直以來的信任與配合！`,
+          verdict: "軟化了家長的防禦高牆，既讓孩子承擔了責任，又建立了深厚的親師信任。"
+        },
+        project: {
+          badge: "701 班級經營 Project + Agent 自主閉環",
+          status: "全班脈絡、個案追蹤",
+          title: "交代目標給 Agent：",
+          input: `「Agent，小明今天體育課搶球與小華起口角並推人。請調閱 Project 內小明這學期的輔導筆記與家庭背景，產出親師 LINE 稿，並自動更新至本班學生行為觀察日誌中。」`,
+          note: "🚀 Agent 自主行動：自動調出小明過去「渴望同儕認同但容易衝動」之特質筆記，精準客製化通訊稿並自動歸檔。",
+          quality: "⭐⭐⭐⭐⭐ 輔導專業級",
+          output: `[Agent 執行歷程日誌]
+1. 檢索【小明輔導備忘卡】：發現小明上個月在週記寫過「覺得自己發育慢很自卑」，本事件小華罵矮直接觸碰其核心敏感點。
+2. 自動生成高同理親師通訊草稿（已自動融入該心理脈絡）。
+3. 自動更新【701班學生行為事件流水帳】：完成第 4 次日常晤談記錄存檔，標記「後續追蹤：體育老師協助安排同組合作練習」。
+4. 貼心提醒導師：小明媽媽通常在晚上 7:30 後下班，建議設定於 19:40 發送訊息效果最佳。`,
+          verdict: "超越單次文字生成，全面整合了學生的心理歷程、輔導歸檔與最佳溝通時機！"
+        }
+      },
+      admin: {
+        prompt: {
+          badge: "單次 Prompt 模式",
+          status: "無公文格式規範",
+          title: "教師直接輸入的文字：",
+          input: "「幫我看這篇教育局公文，總結一下重點然後幫我寫個簽呈。」",
+          note: "⚠️ 缺點：AI 沒有校園公文規章的概念，寫出來像作文，無法直接上呈。",
+          quality: "⭐ 無法用於正式公文",
+          output: `這是一篇關於推動智慧校園計畫的公文。
+重點是每間學校可以申請最多 25 萬元的補助，要在 11 月 30 日前提出。學校需要辦兩場研習。
+
+簽呈：
+我想申請這個計畫，因為對學校很有幫助，可以買平板，請校長同意。`,
+          verdict: "語氣不符公文體系，缺少受文者、發文字號、會辦處室與標準三段式擬辦。"
+        },
+        skill: {
+          badge: "掛載 學校公文與簽呈擬辦 Skill",
+          status: "行政標準三段式格式",
+          title: "輸入搭配 Skill 引導：",
+          input: `執行【學校公文速讀與簽呈擬辦 Skill】
+來文機關：高雄市政府教育局
+主旨：函知申辦「114學年度推動智慧校園暨 AI 輔助教學實踐計畫」
+重點規範：最高補助 25 萬（經常門 15 萬、資本門 10 萬），需辦校內研習 2 場。
+要求：輸出標準「簽 於 某處室」、「主旨、說明、擬辦」完整簽呈草稿。`,
+          note: "✨ 優勢：嚴格依照公文程式條例與學校簽呈格式排版。",
+          quality: "⭐⭐⭐⭐ 合規專業",
+          output: `簽 於 教務處資訊組
+
+主旨：有關教育局函知申辦「114學年度推動智慧校園暨 AI 輔助教學實踐計畫」乙案，簽請 核示。
+
+說明：
+一、依教育局 114 年 11 月 1 日高市教資字第 11430987600 號函辦理。
+二、本案最高可獲經常門 15 萬元、資本門 10 萬元補助，有助於充實本校數學與科技領域平板教學設備。
+三、經費需配合辦理校內研習 2 場次，擬結合本校領域備課時間辦理。
+
+擬辦：
+一、奉核後，由資訊組會同數學領域教師於 11 月 20 日前撰擬計畫書。
+二、本案會請總務處協助設備訪價、會請會計室核配科目預算後，於期限前陳報局端。
+三、陳請 校長核示。`,
+          verdict: "標準三段式簽呈，法規依據清楚，會辦處室明確，主管看了直接能蓋章！"
+        },
+        project: {
+          badge: "教務行政 Project + Agent 自主閉環",
+          status: "跨處室管考與預算平衡",
+          title: "交代目標給 Agent：",
+          input: `「Agent，上傳這份教育局智慧校園計畫公文。請自動產出簽呈、對照主計法規列出預算概算表，並自動在教務處 Google 行事曆排定截止倒數時程。」`,
+          note: "🚀 Agent 自主行動：自動讀取本校會計代碼 ➔ 建立甘特圖時程 ➔ 檢核經費項目是否符合教育部採購標準。",
+          quality: "⭐⭐⭐⭐⭐ 全自動行政管考",
+          output: `[Agent 執行歷程日誌]
+1. 公文解析：萃取總額 25 萬元（經常門 15 萬、資本門 10 萬）。
+2. 主計合規查核：外聘講師鐘點費設定為 2000元/小時，符合規定；資本門平板單價設定為 12,000 元，符合上限。
+3. 產出檔案：
+   • 【智慧校園計畫簽呈_正式版.docx】
+   • 【經費概算初審表_自動平衡公式.xlsx】
+4. 行事曆推播：已於教務處行事曆標記「11/20 跨處室會辦截止」、「11/28 系統最終上傳」，並寄發提醒信給資訊組長。`,
+          verdict: "行政同仁夢寐以求的數位管考秘書，從公文到經費與時程一手包辦！"
+        }
+      }
+    };
+
+    let currentScenario = 'math';
+    let currentMode = 'prompt';
+
+    function setSimMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.sim-mode-btn').forEach(btn => {
+        btn.classList.remove('bg-amber-500', 'bg-blue-600', 'bg-emerald-600', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+
+      const activeBtn = document.getElementById('sim-mode-' + mode);
+      if (mode === 'prompt') {
+        activeBtn.classList.add('bg-amber-500', 'text-white', 'shadow-sm');
+      } else if (mode === 'skill') {
+        activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+      } else if (mode === 'project') {
+        activeBtn.classList.add('bg-emerald-600', 'text-white', 'shadow-sm');
+      }
+      activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+      updateSimulator();
+    }
+
+    function updateSimulator() {
+      const select = document.getElementById('sim-scenario-select');
+      currentScenario = select.value;
+      const data = simData[currentScenario][currentMode];
+
+      document.getElementById('sim-input-badge').textContent = data.badge;
+      document.getElementById('sim-input-status').textContent = data.status;
+      document.getElementById('sim-input-title').textContent = data.title;
+      document.getElementById('sim-input-content').textContent = data.input;
+      document.getElementById('sim-input-note').textContent = data.note;
+
+      document.getElementById('sim-output-quality').textContent = "品質評級：" + data.quality;
+      document.getElementById('sim-output-content').textContent = data.output;
+      document.getElementById('sim-output-verdict').textContent = "綜合點評：" + data.verdict;
+    }
+    // Initialize simulator
+    updateSimulator();
+
+    // GLOSSARY SEARCH / FILTER
+    function filterGlossary() {
+      const query = document.getElementById('glossary-search').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.glossary-card');
+      cards.forEach(card => {
+        const keyword = card.getAttribute('data-keyword').toLowerCase();
+        const text = card.innerText.toLowerCase();
+        if (!query || keyword.includes(query) || text.includes(query)) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // INTERACTIVE QUIZ DATA
+    const quizQuestions = [
+      {
+        category: "概念辨析",
+        q: "如果國中導師希望 AI 能「長期記住」701 班所有學生的特殊疾病史、家長通訊偏好與座號，下次對話時不用重新輸入，應該使用哪種架構？",
+        options: [
+          "每次對話時都手動寫在 Prompt 提示詞最前面",
+          "建立一個 701 班專屬的 Project（專案空間），並上傳學生名冊與注意事項手冊",
+          "在對話框裡連發 10 次警告叫 AI 記住",
+          "直接升級電腦記憶體硬體"
+        ],
+        answer: 1,
+        explanation: "正確答案是【建立 Project 專案空間】！Project 專門用來提供持久的背景知識庫（Context）。Prompt 是用完即丟的，而 Project 能讓 AI 在整個學期中持續掌握專屬脈絡。"
+      },
+      {
+        category: "運作架構",
+        q: "傳統大語言模型（如早期的 ChatGPT）在算國中數學題目時，偶爾會算錯或給出不存在的質因數。現代 AI Agent 是透過哪一項核心能力來徹底避免這種「計算幻覺」？",
+        options: [
+          "背誦更多維基百科文章",
+          "工具調用 (Tool Calling)，主動在背景呼叫 Python 程式或計算機執行真實演算",
+          "使用更華麗的文學詞藻",
+          "要求使用者換成英文提問"
+        ],
+        answer: 1,
+        explanation: "正確答案是【工具調用 (Tool Calling)】！Agent 擁有了操作現實工具的雙手，當遇到需要精確計算的質因數分解或 GCD 時，會自己調用 Python 直譯器計算並驗證，不再靠文字瞎猜。"
+      },
+      {
+        category: "工作流程",
+        q: "什麼是「Skill（技能模組）」的核心價值？",
+        options: [
+          "它是一台昂貴的伺服器硬體",
+          "它能把資深教師或行政人員的專業 SOP（如三明治親師溝通、階梯出題手冊）打包封裝，讓任何人都能重複呼叫產出高水準成果",
+          "它會自動把學生成績改成 100 分",
+          "它只能在有高速網路的地方使用"
+        ],
+        answer: 1,
+        explanation: "正確答案是【將專家專業 SOP 打包封裝】！Skill 就像是把資深老師的指導手冊模組化，AI 在需要時動態載入，大幅提升產出的穩定度與專業水準。"
+      },
+      {
+        category: "未來視野",
+        q: "關於 AGI（通用人工智慧）與 AI Agent 的關係，下列敘述何者最正確？",
+        options: [
+          "AGI 早就已經在 1990 年被完全實現了",
+          "AI Agent 是邁向 AGI 的關鍵路徑，因為 Agent 具備自主感知、多步規劃、工具使用與自我反思能力",
+          "AI Agent 只能用來聊天，跟 AGI 沒有任何關係",
+          "AGI 只是電影特效名詞，現實中科學家並不在乎"
+        ],
+        answer: 1,
+        explanation: "正確答案是【AI Agent 是邁向 AGI 的關鍵路徑】！從 Narrow AI（專用弱人工智慧）到具有自主規劃、工具調用與反思的 Agentic AI，正是科技界邁向通用人工智慧（AGI）最堅實的橋樑。"
+      },
+      {
+        category: "教育倫理",
+        q: "在校園推動 AI Agent 時，「人在迴圈中 (Human-in-the-Loop)」原則為何不可或缺？",
+        options: [
+          "因為如果不派人看著，電腦螢幕會自動休眠",
+          "因為在牽涉學生輔導隱私、成績定稿與正式公文核章時，教育的倫理道德、法律責任與真實同理心必須由人類教師親自把關",
+          "因為學校長官喜歡在公文上蓋章的聲音",
+          "這只是一句口號，實際上全部交給 AI 自動執行最安全"
+        ],
+        answer: 1,
+        explanation: "正確答案是【教育倫理、法律責任與真實同理心必須由人類教師親自把關】！AI Agent 是最強大的副駕駛，但真正的機長與教育靈魂，永遠是具備溫度與專業判斷的現場老師與行政同仁！"
+      }
+    ];
+
+    let currentQ = 0;
+    let userScore = 0;
+    let userAnswers = new Array(quizQuestions.length).fill(null);
+
+    function renderQuiz() {
+      const q = quizQuestions[currentQ];
+      document.getElementById('quiz-progress-text').textContent = `第 ${currentQ + 1} / ${quizQuestions.length} 題`;
+      document.getElementById('quiz-score-text').textContent = `${userScore} 分`;
+      document.getElementById('quiz-category').textContent = q.category;
+      document.getElementById('quiz-question').textContent = q.q;
+
+      const optContainer = document.getElementById('quiz-options');
+      optContainer.innerHTML = '';
+
+      q.options.forEach((opt, idx) => {
+        const isSelected = userAnswers[currentQ] === idx;
+        const btn = document.createElement('button');
+        btn.className = `w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm transition-all flex items-center justify-between ${
+          isSelected 
+            ? 'border-blue-500 bg-blue-50 font-semibold text-blue-900 shadow-sm' 
+            : 'border-slate-200 hover:bg-slate-50 text-slate-700'
+        }`;
+        btn.innerHTML = `
+          <div class="flex items-center space-x-3">
+            <span class="w-6 h-6 rounded-lg ${isSelected ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'} flex items-center justify-center font-bold text-xs shrink-0">
+              ${String.fromCharCode(65 + idx)}
+            </span>
+            <span>${opt}</span>
+          </div>
+          ${isSelected ? '<i data-lucide="check" class="w-4 h-4 text-blue-600"></i>' : ''}
+        `;
+        btn.onclick = () => selectQuizOption(idx);
+        optContainer.appendChild(btn);
+      });
+
+      const fb = document.getElementById('quiz-feedback');
+      if (userAnswers[currentQ] !== null) {
+        fb.classList.remove('hidden');
+        if (userAnswers[currentQ] === q.answer) {
+          fb.className = "p-4 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-900 text-xs sm:text-sm";
+          fb.innerHTML = `<strong>🎉 答對了！</strong> ${q.explanation}`;
+        } else {
+          fb.className = "p-4 rounded-xl border border-rose-200 bg-rose-50 text-rose-900 text-xs sm:text-sm";
+          fb.innerHTML = `<strong>❌ 答錯了！</strong> ${q.explanation}`;
+        }
+      } else {
+        fb.classList.add('hidden');
+      }
+
+      document.getElementById('quiz-prev-btn').disabled = (currentQ === 0);
+      document.getElementById('quiz-next-btn').textContent = (currentQ === quizQuestions.length - 1) ? '查看測驗結語 🎉' : '下一題 ➔';
+      lucide.createIcons();
+    }
+
+    function selectQuizOption(optIdx) {
+      if (userAnswers[currentQ] === null) {
+        userAnswers[currentQ] = optIdx;
+        if (optIdx === quizQuestions[currentQ].answer) {
+          userScore += 20;
+        }
+      } else {
+        // already answered, let them toggle if they want, but don't re-score simply
+        if (userAnswers[currentQ] !== quizQuestions[currentQ].answer && optIdx === quizQuestions[currentQ].answer) {
+          userScore += 20;
+        } else if (userAnswers[currentQ] === quizQuestions[currentQ].answer && optIdx !== quizQuestions[currentQ].answer) {
+          userScore -= 20;
+        }
+        userAnswers[currentQ] = optIdx;
+      }
+      renderQuiz();
+    }
+
+    function prevQuestion() {
+      if (currentQ > 0) {
+        currentQ--;
+        renderQuiz();
+      }
+    }
+
+    function nextQuestion() {
+      if (currentQ < quizQuestions.length - 1) {
+        currentQ++;
+        renderQuiz();
+      } else {
+        alert(`🎉 恭喜完成測驗！您的最終得分為：${userScore} / 100 分！\n您已經具備成為校園 AI Agent 領航教師的核心觀念！`);
+      }
+    }
+    // Initialize quiz
+    renderQuiz();
+
+    // FOLDER VS PROJECT TAB SWITCHING (TEACHER'S METAPHOR)
+    function switchFolderConceptTab(tabKey) {
+      document.querySelectorAll('.fc-tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.fc-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-600', 'text-white', 'font-bold', 'shadow-sm');
+        btn.classList.add('text-indigo-200');
+      });
+
+      const target = document.getElementById('fc-tab-' + tabKey);
+      const activeBtn = document.getElementById('btn-fc-' + tabKey);
+      if (target) target.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.add('bg-indigo-600', 'text-white', 'font-bold', 'shadow-sm');
+        activeBtn.classList.remove('text-indigo-200');
+      }
+      lucide.createIcons();
+    }
+
+    // CLIPBOARD COPY HELPER
+    function copyToClipboard(elemId) {
+      const text = document.getElementById(elemId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("範本內容已成功複製到剪貼簿！可直接貼至您的自訂技能筆記中。");
+      }).catch(err => {
+        console.error("複製失敗：", err);
+      });
+    }
+  </script>
+</body>
+</html>
